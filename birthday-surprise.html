@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>برای تو ❤️</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Vazirmatn:wght@300;400;500;700;900&display=swap');
+
+  :root{
+    --bg-deep:#080c1a;
+    --bg-deep2:#0d1330;
+    --panel:#141b3a;
+    --panel-border:rgba(217,182,106,.22);
+    --gold:#d9b66a;
+    --gold-bright:#f4d58d;
+    --muted:#8b94b8;
+    --cream:#f7efe1;
+    --ink:#3a2417;
+    --ink-soft:#5b4636;
+    --terracotta:#c0631f;
+    --wine:#7a3344;
+    --flame1:#ff8c42;
+    --flame2:#ffd66b;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Vazirmatn',sans-serif;
+    background:var(--bg-deep);
+    color:var(--cream);
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+
+  /* ---------- starfield ---------- */
+  #stars{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:radial-gradient(ellipse at 50% -10%, #1a2350 0%, var(--bg-deep) 60%);
+  }
+
+  /* ---------- generic section ---------- */
+  .section{
+    max-width:760px;
+    margin:0 auto;
+    padding:5.5rem 1.4rem;
+    position:relative;
+  }
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .9s ease, transform .9s ease;
+  }
+  .reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .section-eyebrow{
+    font-size:.8rem;
+    letter-spacing:.25em;
+    color:var(--gold);
+    text-align:center;
+    margin-bottom:.6rem;
+  }
+  .section-title{
+    font-family:'Aref Ruqaa',serif;
+    font-size:clamp(1.8rem,6vw,2.6rem);
+    text-align:center;
+    color:var(--cream);
+    margin-bottom:.6rem;
+  }
+  .section-sub{
+    text-align:center;
+    color:var(--muted);
+    max-width:34ch;
+    margin:0 auto 2.5rem;
+    font-size:.98rem;
+  }
+  .divider{
+    text-align:center;
+    color:var(--gold);
+    opacity:.6;
+    font-size:1.1rem;
+    margin:0 auto;
+    letter-spacing:.6em;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2rem 1.4rem;
+    position:relative;
+  }
+  .hero .eyebrow{
+    font-size:.85rem;
+    letter-spacing:.35em;
+    color:var(--gold);
+    margin-bottom:1.2rem;
+  }
+  .hero h1{
+    font-family:'Aref Ruqaa',serif;
+    font-weight:700;
+    font-size:clamp(3rem,15vw,6.5rem);
+    color:var(--cream);
+    text-shadow:0 0 40px rgba(244,213,141,.25);
+  }
+  .hero p{
+    margin-top:1.4rem;
+    color:var(--muted);
+    max-width:30ch;
+    font-size:1rem;
+  }
+  .hero .line{
+    width:1px;
+    height:46px;
+    background:linear-gradient(var(--gold),transparent);
+    margin:2.6rem auto 0;
+    animation:lineGrow 2.4s ease-in-out infinite;
+  }
+  @keyframes lineGrow{
+    0%,100%{opacity:.35; transform:scaleY(.7);}
+    50%{opacity:1; transform:scaleY(1);}
+  }
+
+  /* ---------- log section ---------- */
+  .log-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1rem;
+  }
+  .log-card{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:10px;
+    padding:1.4rem 1.2rem;
+  }
+  .log-card.feature{ grid-column:1 / -1; text-align:center; }
+  .log-index{
+    font-size:.7rem;
+    letter-spacing:.25em;
+    color:var(--gold);
+    margin-bottom:.6rem;
+    direction:ltr;
+    display:block;
+  }
+  .log-number{
+    direction:ltr;
+    unicode-bidi:isolate;
+    display:block;
+    font-weight:900;
+    font-size:clamp(1.6rem,6vw,2.2rem);
+    color:var(--gold-bright);
+    letter-spacing:.02em;
+  }
+  .log-card.feature .log-number{ font-size:clamp(2.2rem,9vw,3.2rem); }
+  .log-label{
+    margin-top:.35rem;
+    font-weight:500;
+    color:var(--cream);
+  }
+  .log-note{
+    margin-top:.55rem;
+    font-size:.85rem;
+    color:var(--muted);
+    line-height:1.7;
+  }
+  @media (max-width:540px){
+    .log-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- letter ---------- */
+  .letter-wrap{
+    padding-top:2rem;
+    padding-bottom:2rem;
+  }
+  .letter-card{
+    background:var(--cream);
+    color:var(--ink-soft);
+    border-radius:14px;
+    padding:3rem 1.8rem;
+    box-shadow:0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(217,182,106,.25);
+  }
+  .letter-eyebrow{
+    font-family:'Aref Ruqaa',serif;
+    font-size:1.3rem;
+    color:var(--terracotta);
+    text-align:center;
+    margin-bottom:2rem;
+  }
+  .letter-card p{
+    margin-bottom:1.35rem;
+    font-size:1.02rem;
+  }
+  .letter-card p:last-of-type{ margin-bottom:0; }
+  .letter-card .emph{
+    color:var(--ink);
+    font-weight:700;
+  }
+  .num{
+    direction:ltr;
+    unicode-bidi:isolate;
+    display:inline-block;
+    font-weight:800;
+    color:var(--terracotta);
+  }
+  .poem{
+    font-family:'Aref Ruqaa',serif;
+    text-align:center;
+    color:var(--wine);
+    font-size:clamp(1.05rem,4vw,1.25rem);
+    line-height:2.3;
+    border-right:2px solid var(--gold);
+    padding:.4rem 1.1rem;
+    margin:1.8rem 0;
+  }
+  .poem p{ margin:0; }
+  .poem .attr{
+    font-family:'Vazirmatn',sans-serif;
+    font-size:.78rem;
+    color:var(--ink-soft);
+    opacity:.6;
+    margin-top:.7rem;
+    letter-spacing:.1em;
+  }
+  .final-line{
+    font-family:'Aref Ruqaa',serif;
+    font-size:clamp(1.3rem,5vw,1.7rem);
+    text-align:center;
+    color:var(--terracotta);
+    margin-top:2.2rem;
+  }
+
+  /* ---------- candle ---------- */
+  .candle-section{ text-align:center; }
+  .candle-hint{
+    color:var(--muted);
+    font-size:.92rem;
+    margin-bottom:2.2rem;
+    transition:opacity .6s ease;
+  }
+  .candle-hint.hidden{ opacity:0; }
+  .candle-wrap{
+    position:relative;
+    width:90px;
+    height:200px;
+    margin:0 auto 2.5rem;
+    cursor:pointer;
+  }
+  .glow{
+    position:absolute;
+    top:-70px; left:50%;
+    width:120px; height:120px;
+    transform:translateX(-50%);
+    background:radial-gradient(circle, rgba(255,214,107,.35), transparent 70%);
+    transition:opacity .8s ease;
+    pointer-events:none;
+  }
+  .candle-wrap.blown .glow{ opacity:0; }
+  .candle-body{
+    position:absolute;
+    bottom:0; left:50%;
+    transform:translateX(-50%);
+    width:64px; height:140px;
+    border-radius:8px;
+    background:repeating-linear-gradient(180deg, #f0c9d5 0 14px, #e7b6c6 14px 28px);
+    box-shadow:inset -8px 0 16px rgba(0,0,0,.15);
+  }
+  .wick{
+    position:absolute;
+    top:-58px; left:50%;
+    transform:translateX(-50%);
+    width:4px; height:16px;
+    background:#3a2a1a;
+    border-radius:2px;
+  }
+  .flame{
+    position:absolute;
+    top:-92px; left:50%;
+    transform:translateX(-50%);
+    width:26px; height:40px;
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    background:radial-gradient(circle at 50% 70%, var(--flame2), var(--flame1) 60%, transparent 85%);
+    transform-origin:50% 100%;
+    transition:opacity .5s ease, transform .5s ease;
+    animation:flicker 1.6s ease-in-out infinite alternate;
+  }
+  .candle-wrap.blown .flame{
+    opacity:0;
+    transform:translateX(-50%) scaleY(.2);
+    animation:none;
+  }
+  @keyframes flicker{
+    0%{ transform:translateX(-50%) scale(1,1) rotate(-1deg); }
+    50%{ transform:translateX(-50%) scale(1.06,1.12) rotate(1.5deg); }
+    100%{ transform:translateX(-50%) scale(.96,1.02) rotate(-2deg); }
+  }
+  .smoke{
+    position:absolute;
+    top:-90px; left:50%;
+    width:8px; height:8px;
+    border-radius:50%;
+    background:rgba(210,210,220,.55);
+    transform:translateX(-50%);
+    opacity:0;
+  }
+  .candle-wrap.blown .smoke{
+    animation:smokeRise 1.8s ease-out forwards;
+  }
+  @keyframes smokeRise{
+    0%{ opacity:.6; transform:translate(-50%,0) scale(1); }
+    100%{ opacity:0; transform:translate(-50%,-90px) scale(3.4); }
+  }
+  .burst-container{
+    position:absolute;
+    top:-92px; left:50%;
+    width:0; height:0;
+  }
+  .particle{
+    position:absolute;
+    top:0; left:0;
+    font-size:1.1rem;
+    color:var(--gold-bright);
+    pointer-events:none;
+    opacity:0;
+    animation:burstOut 1.2s ease-out forwards;
+  }
+  @keyframes burstOut{
+    0%{ transform:translate(-50%,-50%) scale(.3); opacity:0; }
+    18%{ opacity:1; }
+    100%{ transform:translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1); opacity:0; }
+  }
+  .final-msg{
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity 1s ease, transform 1s ease;
+    font-family:'Aref Ruqaa',serif;
+    font-size:clamp(1.25rem,5vw,1.7rem);
+    color:var(--gold-bright);
+    line-height:2;
+  }
+  .final-msg.show{ opacity:1; transform:translateY(0); }
+  .final-msg .date{
+    display:block;
+    margin-top:1rem;
+    font-family:'Vazirmatn',sans-serif;
+    font-size:.85rem;
+    color:var(--muted);
+    letter-spacing:.25em;
+  }
+
+  footer{
+    text-align:center;
+    padding:3rem 1rem 4rem;
+    color:var(--muted);
+    font-size:.8rem;
+    letter-spacing:.15em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero .line, .flame, .reveal{ animation:none !important; transition:none !important; }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="eyebrow">۲۶ خرداد ✦ یک رصد ویژه</div>
+  <h1>تولدت مبارک</h1>
+  <p>قبل از هر چیزی... بیا یه چیزی رو با هم بشماریم.</p>
+  <div class="line"></div>
+</section>
+
+<!-- ===== LOG SECTION ===== -->
+<section class="section reveal">
+  <div class="section-eyebrow">رصدنامه</div>
+  <h2 class="section-title">چند عدد، قبل از همه‌چیز</h2>
+  <p class="section-sub">بعضی حس‌ها انقدر بزرگن که فقط با عدد جا می‌شن. این‌ها چندتا برداشتن، از یه رصدگری که هیچ‌وقت دست از رصد تو نکشیده.</p>
+
+  <div class="log-grid">
+    <div class="log-card">
+      <span class="log-index">رصد ۰۱</span>
+      <span class="log-number" data-target="8100000000">0</span>
+      <div class="log-label">نفر روی این کره‌ی خاکی</div>
+      <div class="log-note">و نگاه من، فقط رو توئه.</div>
+    </div>
+
+    <div class="log-card">
+      <span class="log-index">رصد ۰۲</span>
+      <span class="log-number" data-target="7344000">0</span>
+      <div class="log-label">ثانیه، از وقتی با همیم</div>
+      <div class="log-note">۸۵ روز / ۲۰۴۰ ساعت، بدون یک لحظه دل‌تنگ‌نشدن.</div>
+    </div>
+
+    <div class="log-card">
+      <span class="log-index">رصد ۰۳</span>
+      <span class="log-number" data-target="365">0</span>
+      <div class="log-label">روز توی سال</div>
+      <div class="log-note">همه‌ش مال تو، و بازم کمه.</div>
+    </div>
+
+    <div class="log-card">
+      <span class="log-index">رصد ۰۴</span>
+      <span class="log-number" data-target="10000">0</span>
+      <div class="log-label">شهر روی نقشه‌ی دنیا</div>
+      <div class="log-note">فقط با یکیش که تو باشی، آرومم.</div>
+    </div>
+
+    <div class="log-card feature">
+      <span class="log-index">رصد ۰۵</span>
+      <span class="log-number">۱ : ∞</span>
+      <div class="log-label">شانس پیدا کردن تو</div>
+      <div class="log-note">یک در میلیارد... نه، یک در بی‌نهایت.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider reveal">✦ ✦ ✦</div>
+
+<!-- ===== LETTER ===== -->
+<section class="section letter-wrap reveal">
+  <div class="letter-card">
+    <div class="letter-eyebrow">بعد از همه‌ی اون عددها...</div>
+
+    <p>همیشه دوست دارم کارای جدید انجام بدم؛ مثلاً حسم رو با اعداد بهت ثابت کنم 😅❤️</p>
+
+    <p>می‌دونی <span class="num">8.1 میلیارد</span> آدم تو این جهان وجود داره و من نمی‌تونم دست از نگاه‌کردن به تو بردارم<br>
+    <span class="num">8.1 میلیارد</span>، و من نمی‌تونم دست از فکر کردن بهت بردارم.</p>
+
+    <p>یا مثلاً الان ۲ ماه و ۲۳ روزه با همیم<br>
+    معادل <span class="num">85</span> روز<br>
+    معادل <span class="num">2040</span> ساعت<br>
+    و خلاصه‌ش معادل <span class="num">7,344,000</span> ثانیه، که نتونستم یه لحظه دست از فکر کردن بهت بردارم :)</p>
+
+    <p>و هر روز دلم برات تنگ می‌شه؛ حتی اگه هر لحظه ببینمت، بازم حس می‌کنم کمه.<br>
+    می‌تونی کل روزهای سال پیش من باشی، و آره، همه‌ی <span class="num">365</span> روز مال تو... ولی بازم برام کمه.</p>
+
+    <p>وجودت برام خیلی بیشتر از این‌ها ارزش داره.<br>
+    بیشتر از <span class="num">10,000</span> شهر تو جهان هست، و فقط یه‌دونه‌ش بهم آرامش می‌ده؛ اونم وقتی تو توشی.<br>
+    <span class="num">8 میلیارد</span> آدم، و من احساس تنهایی می‌کنم بدون تو.</p>
+
+    <p>می‌دونی شانسم برای پیدا کردنت چقدر بود؟<br>
+    تو <span class="num">یک در میلیارد</span> من شدی ❤️<br>
+    بین <span class="num">8 میلیارد</span> آدم، بهترینشون رو پیدا کردم :) <span class="num">یک در بی‌نهایت</span>.</p>
+
+    <p>ولی حتی این اعداد بزرگ هم نمی‌تونن میزان حسم رو توصیف کنن؛ و حتی این همه میلیارد، در برابر ارزشی که برای من داری، کمه.<br>
+    برای من خیلی بیشتر از این اعداد ارزش داری.<br>
+    خیلی بیشتر از عددی که فکر کنی دوستت دارم.<br>
+    چه عددی تو ذهنته؟ از اونم بیشتر.</p>
+
+    <p class="emph">تو ادبیات هم کم میارما...</p>
+
+    <div class="poem">
+      <p>عاقبت از عشق تو اهل کلیسا می‌شوم</p>
+      <p>می‌کشم دست از مسلمانی، مسیحا می‌شوم</p>
+      <p style="margin-top:.6rem">این‌قدر در کشتی عشقت نشینم همچو نوح</p>
+      <p>یا به عشقت می‌رسم، یا غرق دریا می‌شوم</p>
+      <div class="attr">حافظ</div>
+    </div>
+
+    <div class="poem">
+      <p>اشتیاقی که به دیدار تو دارد دل من</p>
+      <p>دل من داند و من دانم و دل داند و من</p>
+      <div class="attr">مولانا</div>
+    </div>
+
+    <div class="poem">
+      <p>عشق تو بی‌آن‌که برآید به زبانم</p>
+      <p>رنگ رخساره خبر می‌دهد از حال نهانم</p>
+      <div class="attr">سعدی</div>
+    </div>
+
+    <div class="poem">
+      <p>عمری از ما هدر رفت پی طالع و سیارات</p>
+      <p>آن‌چه پیش خدا آرزو کردیم، از بین فرشته‌هاش اومد</p>
+      <p style="margin-top:.6rem">خدام که فرشته‌ش رو به من سپرده</p>
+    </div>
+
+    <p>به منم حق بده؛<br>
+    اعداد ناچیزن،<br>
+    کلمات قاصرن،<br>
+    و به من ناتوان حق بده اگه نتونم زیبایی‌ت رو با اعداد و کلمات وصف کنم.<br>
+    انگار خدا خودش نشسته چشمات رو نقاشی کرده.</p>
+
+    <p>همه‌ی این‌ها رو گفتم، ولی کافی نیست؛ چون همه‌ی این‌ها قراره هر روز خوشگل‌تر بشن، و خدا صبر بده به دل عاشق من.<br>
+    وای به دلی که عاشق چشمات شه ❤️<br>
+    و هر روز قراره اون چشم‌ها خوشگل‌تر بشن.</p>
+
+    <div class="final-line">
+      تولدت مبارک دختر ناز من 🤍<br>
+      امیدوارم بهترین اتفاق‌ها برات بیفته، و وقتی داریم شمع تولد سال بعد رو فوت می‌کنیم،<br>
+      به این فکر کنیم چه سال قشنگی رو کنار هم بودیم ❤️
+    </div>
+  </div>
+</section>
+
+<!-- ===== CANDLE ===== -->
+<section class="section candle-section reveal">
+  <div class="section-eyebrow">حالا</div>
+  <h2 class="section-title">یه آرزو کن</h2>
+
+  <div class="candle-hint" id="candleHint">شمع رو لمس کن، آرزو کن، و فوتش کن 🕯️</div>
+
+  <div class="candle-wrap" id="candle">
+    <div class="glow"></div>
+    <div class="burst-container"></div>
+    <div class="smoke"></div>
+    <div class="flame"></div>
+    <div class="wick"></div>
+    <div class="candle-body"></div>
+  </div>
+
+  <div class="final-msg" id="finalMsg">
+    تا سال بعد...<br>
+    و سال بعدش...<br>
+    و همه‌ی سال‌هایی که هنوز نیومدن.<br>
+    دوستت دارم. 🤍
+    <span class="date">۲۶ خرداد</span>
+  </div>
+</section>
+
+<footer>ساخته شده با ❤️</footer>
+
+<script>
+  /* ---------- starfield ---------- */
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+  function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const stars = Array.from({length:140}, () => ({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: Math.random()*1.4+0.3,
+    phase: Math.random()*Math.PI*2,
+    speed: 0.0008+Math.random()*0.0025
+  }));
+
+  function drawStars(t){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(const s of stars){
+      const a = reduceMotion ? 0.6 : 0.35 + 0.55*(0.5+0.5*Math.sin(t*s.speed + s.phase));
+      ctx.fillStyle = `rgba(244,213,141,${a})`;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+    if(!reduceMotion) requestAnimationFrame(drawStars);
+  }
+  requestAnimationFrame(drawStars);
+
+  /* ---------- scroll reveal ---------- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>revealObs.observe(el));
+
+  /* ---------- count up ---------- */
+  const counters = document.querySelectorAll('.log-number[data-target]');
+  const countObs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ animateCount(e.target); countObs.unobserve(e.target); }
+    });
+  }, {threshold:0.4});
+  counters.forEach(c=>countObs.observe(c));
+
+  function animateCount(el){
+    const target = parseInt(el.dataset.target, 10);
+    if(reduceMotion){ el.textContent = target.toLocaleString('en-US'); return; }
+    const duration = 1700;
+    const start = performance.now();
+    function frame(now){
+      const progress = Math.min((now-start)/duration, 1);
+      const eased = 1 - Math.pow(1-progress, 3);
+      el.textContent = Math.floor(eased*target).toLocaleString('en-US');
+      if(progress < 1) requestAnimationFrame(frame);
+      else el.textContent = target.toLocaleString('en-US');
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* ---------- candle ---------- */
+  const candle = document.getElementById('candle');
+  const hint = document.getElementById('candleHint');
+  const finalMsg = document.getElementById('finalMsg');
+  const burstContainer = candle.querySelector('.burst-container');
+  const symbols = ['✦','✧','❤','♡','✩'];
+  let blown = false;
+
+  candle.addEventListener('click', () => {
+    if(blown) return;
+    blown = true;
+    candle.classList.add('blown');
+    hint.classList.add('hidden');
+    burst();
+    setTimeout(()=> finalMsg.classList.add('show'), 450);
+  });
+
+  function burst(){
+    const count = reduceMotion ? 0 : 26;
+    for(let i=0;i<count;i++){
+      const el = document.createElement('span');
+      el.className = 'particle';
+      el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+      const angle = Math.random()*Math.PI*2;
+      const dist = 70 + Math.random()*170;
+      el.style.setProperty('--x', (Math.cos(angle)*dist)+'px');
+      el.style.setProperty('--y', (Math.sin(angle)*dist)+'px');
+      el.style.animationDelay = (Math.random()*0.25)+'s';
+      burstContainer.appendChild(el);
+      el.addEventListener('animationend', ()=> el.remove());
+    }
+  }
+</script>
+
+</body>
+</html>
